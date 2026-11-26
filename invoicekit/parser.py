@@ -14,6 +14,9 @@ def parse_csv(text: str) -> list[LineItem]:
     items = []
     lines = text.strip().split("\n")
     for line in lines[1:]:  # skip header
+        # Skip empty or whitespace‑only lines
+        if not line.strip():
+            continue
         description, quantity, unit_price = line.split(",")
         items.append(LineItem(description.strip(), int(quantity), float(unit_price)))
     return items
