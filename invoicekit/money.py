@@ -12,4 +12,5 @@ def total_cents(items: list[LineItem]) -> int:
 
 def format_money(cents: int, currency: str = "$") -> str:
     dollars = cents / 100
-    return f"{currency}{dollars:,.2f}"
+    sign = "-" if cents < 0 else ""
+    return f"{sign}{currency}{abs(dollars):,.2f}"
